@@ -9,8 +9,8 @@ package com.bridgelabz;
  */
 public class EmployeeWage {
 	/**
-	 * UC6
-	 * Calculate Wages till a condition of total working hours of 100 or max days of 20 is reached for a month
+	 * UC7
+	 * Refactor the Codeto write a Class Method to Compute Employee Wage
 	 */
 	//Constant
 		public static final  int IS_PART_TIME = 1;

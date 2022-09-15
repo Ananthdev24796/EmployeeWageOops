@@ -21,7 +21,7 @@ public class EmployeeWage {
 		
 
 	
-	public static int computeEmpWage() {
+	public static int computeEmpWage(String company,int empRatePerHours,int numOfWorkingDays,int maxHoursPerMonth) {
 		
 		//variables
 		int empHrs = 0;
@@ -30,7 +30,7 @@ public class EmployeeWage {
 		int totalEmpHrs = 0;
 		int totalWorkingDays = 0;
 		//computation
-		while( totalEmpHrs <= MAX_HR_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS ) {
+		while( totalEmpHrs <= maxHoursPerMonth && totalWorkingDays < numOfWorkingDays ) {
 			totalWorkingDays++;
 		int empCheck =(int) Math.floor(Math.random()*10)%3;
 		switch(empCheck){
@@ -52,14 +52,14 @@ public class EmployeeWage {
 		System.out.println("Day#:"+totalWorkingDays+" Emp hrs"+empHrs);
 		}
 		
-		totalEmpWage = totalEmpHrs*EMP_RATE_PER_HOUR;
-		System.out.println("Total Emp Wage:"+totalEmpWage);
+		totalEmpWage = totalEmpHrs*empRatePerHours;
+		System.out.println("Total Emp Wage for comapny:"+company+":is" +totalEmpWage);
 		return totalEmpWage;
 	  }
 	
 	 public static void main(String[] args) {
-		 computeEmpWage();
-		 
+		 computeEmpWage("Dmart",20,5,100);
+		 computeEmpWage("Reliance",20,4,100);
 	 }
 	}
 		

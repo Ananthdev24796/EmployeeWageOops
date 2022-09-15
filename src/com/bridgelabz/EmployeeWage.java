@@ -21,7 +21,7 @@ public class EmployeeWage {
 		
 
 	
-	public static void main(String[] args) {
+	public static int computeEmpWage() {
 		
 		//variables
 		int empHrs = 0;
@@ -54,8 +54,13 @@ public class EmployeeWage {
 		
 		totalEmpWage = totalEmpHrs*EMP_RATE_PER_HOUR;
 		System.out.println("Total Emp Wage:"+totalEmpWage);
+		return totalEmpWage;
 	  }
-
+	
+	 public static void main(String[] args) {
+		 computeEmpWage();
+		 
+	 }
 	}
 		
 

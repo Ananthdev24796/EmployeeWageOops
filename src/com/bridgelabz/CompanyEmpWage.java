@@ -23,7 +23,7 @@ public class CompanyEmpWage {
 	}
 	public void setTotalEmpWage(int totalEmpWage) {
 		this.totalEmpWage = totalEmpWage;
-	}
+	} 
 	
 	@Override
 	public String toString() {

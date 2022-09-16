@@ -1,36 +1,45 @@
 package com.bridgelabz;
+
+import java.util.ArrayList;
+
 /**
  * @author Iam_A
  *
  */
-public class EmpWageBuilderArray {
 
+public class EmpWageBuilderArray implements ComputeEmpWage {
+	/*
+	 * UC11
+	 */
+	
 	public static final int IS_PART_TIME =1;
 	public static final int IS_FULL_TIME =2;
 	
 	private int numOfCompany = 0;
-	private CompanyEmpWage[] companyEmpWageArray;
+	//private CompanyEmpWage[] companyEmpWageArray;
+	public ArrayList<CompanyEmpWage> companyEmpWageList;
 	public EmpWageBuilderArray() {
-		companyEmpWageArray = new CompanyEmpWage[5];
+		companyEmpWageList = new ArrayList() ;
 	}
-	private void addCompanyEmpWage(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth) {
-		companyEmpWageArray[numOfCompany] = new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
-		numOfCompany++;
+	public void addCompanyEmpWage(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth) {
+		CompanyEmpWage comEpWage  = new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
+		companyEmpWageList.add(comEpWage);
 	}
-	private void computeEmpWage() {
-		for(int i=0;i<numOfCompany;i++) {
-			companyEmpWageArray[i].setTotalEmpWage(this.computeEmpWage(companyEmpWageArray[i]));
-			System.out.println(companyEmpWageArray[i]);
+	public void computeEmpWage() {
+		for(int i=0;i<companyEmpWageList.size();i++) {
+			CompanyEmpWage c1 =companyEmpWageList.get(i);
+			c1.setTotalEmpWage(this.computeEmpWage(c1));
+			System.out.println(c1.totalEmpWage);
 		}
 		
 	}
-	private int computeEmpWage(CompanyEmpWage companyEmpWage) {
+	private int computeEmpWage(CompanyEmpWage comEpWage) {
 		// variables
 		int empHrs = 0;
 		int totalEmpHrs = 0;
 		int totalWorkingDays = 0;
 		// computation
-					while(totalEmpHrs <= companyEmpWage.maxHoursPerMonth && totalWorkingDays < companyEmpWage.numOfWorkingDays  ) {
+					while(totalEmpHrs <= comEpWage.maxHoursPerMonth && totalWorkingDays < comEpWage.numOfWorkingDays  ) {
 						totalWorkingDays++;
 						int empCheck = (int)Math.floor (Math.random() * 10)%3;
 						switch (empCheck) {
@@ -47,7 +56,7 @@ public class EmpWageBuilderArray {
 						totalEmpHrs += empHrs;
 						System.out.println("Day#: " +totalWorkingDays + "Emp Hr:" +empHrs);
 					}
-					return totalEmpHrs * companyEmpWage.empRatePerHour;
+					return totalEmpHrs * comEpWage.empRatePerHour;
 					
 	}
 	public static void main(String[] args) {

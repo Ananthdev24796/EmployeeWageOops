@@ -16,11 +16,11 @@ public class EmpWageBuilderArray {
 	public EmpWageBuilderArray() {
 		companyEmpWageArray = new CompanyEmpWage[5];
 	}
-	private void addCompanyEmpWage(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth) {
+	public void addCompanyEmpWage(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth) {
 		companyEmpWageArray[numOfCompany] = new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
 		numOfCompany++;
 	}
-	private void computeEmpWage() {
+	public void computeEmpWage() {
 		for(int i=0;i<numOfCompany;i++) {
 			companyEmpWageArray[i].setTotalEmpWage(this.computeEmpWage(companyEmpWageArray[i]));
 			System.out.println(companyEmpWageArray[i]);

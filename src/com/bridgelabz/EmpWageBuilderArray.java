@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class EmpWageBuilderArray implements ComputeEmpWage {
 	/*
-	 * UC11
+	 * UC12-Refactor to use ArrayList instead of array
 	 */
 	
 	public static final int IS_PART_TIME =1;
@@ -17,17 +17,17 @@ public class EmpWageBuilderArray implements ComputeEmpWage {
 	
 	private int numOfCompany = 0;
 	//private CompanyEmpWage[] companyEmpWageArray;
-	public ArrayList<CompanyEmpWage> companyEmpWageList;
+	public ArrayList<CompanyEmpWage> companyEmpWageArrayList;
 	public EmpWageBuilderArray() {
-		companyEmpWageList = new ArrayList() ;
+		companyEmpWageArrayList = new ArrayList<CompanyEmpWage>() ;
 	}
 	public void addCompanyEmpWage(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth) {
 		CompanyEmpWage comEpWage  = new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
-		companyEmpWageList.add(comEpWage);
+		companyEmpWageArrayList.add(comEpWage);
 	}
 	public void computeEmpWage() {
-		for(int i=0;i<companyEmpWageList.size();i++) {
-			CompanyEmpWage c1 =companyEmpWageList.get(i);
+		for(int i=0;i<companyEmpWageArrayList.size();i++) {
+			CompanyEmpWage c1 =companyEmpWageArrayList.get(i);
 			c1.setTotalEmpWage(this.computeEmpWage(c1));
 			System.out.println(c1.totalEmpWage);
 		}
